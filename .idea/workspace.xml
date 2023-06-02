@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70ce2987-009d-4554-b0aa-51bd779dafbf" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/src/Task.tsx" afterDir="false" />
+    <list default="true" id="70ce2987-009d-4554-b0aa-51bd779dafbf" name="Changes" comment="done with task.tsx">
+      <change afterPath="$PROJECT_DIR$/src/taskWithRedux.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddItemForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppWithReducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithReducers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppWithRedux.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppWithRedux.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditableSpan.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/tasks-reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +88,7 @@
       <workItem from="1681308772340" duration="159000" />
       <workItem from="1681420334054" duration="562000" />
       <workItem from="1685379864464" duration="4616000" />
-      <workItem from="1685635893595" duration="5884000" />
+      <workItem from="1685635893595" duration="9606000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1680355236021</created>
@@ -130,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680460438277</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="done with task.tsx">
+      <created>1685658053022</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685658053022</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +153,7 @@
     <MESSAGE value="initial" />
     <MESSAGE value="almost all done" />
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="done with task.tsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="done with task.tsx" />
   </component>
 </project>

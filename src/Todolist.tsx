@@ -5,6 +5,7 @@ import {EditableSpan} from './EditableSpan';
 import {Button, Checkbox, IconButton} from '@mui/material';
 import {Delete} from '@mui/icons-material';
 import {Task} from './Task';
+import {TaskWithRedux} from './taskWithRedux';
 
 
 export type TaskType = {
@@ -39,9 +40,9 @@ export const Todolist = memo((props: PropsType) => {
         props.changeTodolistTitle(props.id, title);
     }, [props.changeTodolistTitle, props.id]);
 
-    const onAllClickHandler = () => props.changeFilter('all', props.id);
-    const onActiveClickHandler = () => props.changeFilter('active', props.id);
-    const onCompletedClickHandler = () => props.changeFilter('completed', props.id);
+    const onAllClickHandler = useCallback(() => props.changeFilter('all', props.id), []);
+    const onActiveClickHandler = useCallback(() => props.changeFilter('active', props.id), []);
+    const onCompletedClickHandler = useCallback(() => props.changeFilter('completed', props.id), []);
 
     let tasks = props.tasks;
     if (props.filter === 'active') {
@@ -54,9 +55,9 @@ export const Todolist = memo((props: PropsType) => {
     const changeTaskStatus = (taskId: string, isDone: boolean) => {
         props.changeTaskStatus(taskId, isDone, props.id);
     };
-    const changeTaskTitle = useCallback((taskId: string,newValue: string) => {
+    const changeTaskTitle = useCallback((taskId: string, newValue: string) => {
         props.changeTaskTitle(taskId, newValue, props.id);
-    }, [props.changeTaskTitle, props.id])
+    }, [props.changeTaskTitle, props.id]);
 
     return <div>
         <h3><EditableSpan value={props.title} onChange={changeTodolistTitle}/>
@@ -68,31 +69,51 @@ export const Todolist = memo((props: PropsType) => {
         <div>
             {
                 tasks.map(t => {
-                    return <Task
-                        task={t}
-                        removeTask={removeTask}
-                        changeTaskTitle={changeTaskTitle}
-                        changeTaskStatus={changeTaskStatus}
+                    return <TaskWithRedux
+                       key={t.id}
+                       taskId={t.id}
+                       toDoListId={props.id}
                     />;
                 })
             }
         </div>
         <div style={{paddingTop: '10px'}}>
-            <Button variant={props.filter === 'all' ? 'outlined' : 'text'}
-                    onClick={onAllClickHandler}
-                    color={'inherit'}
-            >All
-            </Button>
-            <Button variant={props.filter === 'active' ? 'outlined' : 'text'}
-                    onClick={onActiveClickHandler}
-                    color={'primary'}>Active
-            </Button>
-            <Button variant={props.filter === 'completed' ? 'outlined' : 'text'}
-                    onClick={onCompletedClickHandler}
-                    color={'secondary'}>Completed
-            </Button>
+            <ButtonWithMemo
+                title={'All'}
+                variant={props.filter === 'all' ? 'outlined' : 'text'}
+                onClick={onAllClickHandler}
+                color={'inherit'}/>
+            <ButtonWithMemo
+                title={'Active'}
+                variant={props.filter === 'active' ? 'outlined' : 'text'}
+                onClick={onActiveClickHandler}
+                color={'primary'}
+            />
+            <ButtonWithMemo
+                title={'Completed'}
+                variant={props.filter === 'completed' ? 'outlined' : 'text'}
+                onClick={onCompletedClickHandler}
+                color={'secondary'}/>
+
         </div>
     </div>;
 });
 
+type ButtonWithMemoPropsType = {
+    title: string
+    variant: 'text' | 'outlined' | 'contained'
+    onClick: () => void
+    color: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning'
+}
+
+const ButtonWithMemo: React.FC<ButtonWithMemoPropsType> = memo(({
+                                                                    title, variant,
+                                                                    onClick, color
+                                                                }) => {
+    return <Button variant={variant}
+                   onClick={onClick}
+                   color={color}
+    >{title}
+    </Button>;
+});
 
